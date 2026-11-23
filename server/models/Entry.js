@@ -2,9 +2,10 @@ const mongoose = require('mongoose');
 
 const EntrySchema = new mongoose.Schema({
     title: {
-        type: String
+        type: String,
+        required: true
     },
-    entry: {
+    content: {
         type: String,
         required: true
     },
@@ -12,6 +13,17 @@ const EntrySchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    owner: {
+        type: mongoose.Schema.ObjectId,
+        required: true,
+        ref: 'Account'
+    }
+});
+
+EntrySchema.statics.toAPI = (doc) => ({
+    title: doc.title,
+    content: doc.content,
+    dateCreated: doc.dateCreated,
 });
 
 const EntryModel = mongoose.model('Entry', EntrySchema);
