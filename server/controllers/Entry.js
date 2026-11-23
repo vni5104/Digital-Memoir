@@ -2,7 +2,7 @@ const models = require('../models');
 const Entry = models.Entry;
 
 const journalPage = (req, res) => {
-    return res.json({});
+    return res.render('app');
 };
 
 const createEntryPage = (req, res) => res.render('addPost');
