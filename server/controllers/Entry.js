@@ -1,7 +1,9 @@
 const models = require('../models');
 const Entry = models.Entry;
 
-const entryPage = (req, res) => res.render('app');
+const journalPage = (req, res) => {
+    return res.json({});
+};
 
 const createEntryPage = (req, res) => res.render('addPost');
 
@@ -42,7 +44,7 @@ const getEntries = async (req, res) => {
 };
 
 module.exports = {
-    entryPage,
+    journalPage,
     createEntryPage,
     createEntry,
     getEntries,

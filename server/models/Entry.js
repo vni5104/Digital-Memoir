@@ -1,13 +1,16 @@
 const mongoose = require('mongoose');
+const _ = require('underscore');
 
 const EntrySchema = new mongoose.Schema({
     title: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     content: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     dateCreated: {
         type: Date,
@@ -22,8 +25,7 @@ const EntrySchema = new mongoose.Schema({
 
 EntrySchema.statics.toAPI = (doc) => ({
     title: doc.title,
-    content: doc.content,
-    dateCreated: doc.dateCreated,
+    content: doc.content
 });
 
 const EntryModel = mongoose.model('Entry', EntrySchema);
